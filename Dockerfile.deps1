@@ -1,0 +1,10 @@
+FROM runpod/comfyui:cuda13.0
+
+RUN ln -s /usr/bin/python3 /usr/local/bin/python
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      libsndfile1 \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN python -m pip install --no-cache-dir -U pip setuptools wheel \
+ && python -m pip install --no-cache-dir soundfile torchdiffeq
