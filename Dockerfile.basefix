@@ -1,0 +1,2 @@
+FROM runpod/comfyui:cuda13.0
+RUN ln -s /usr/bin/python3 /usr/local/bin/python
