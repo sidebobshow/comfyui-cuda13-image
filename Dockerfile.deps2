@@ -17,3 +17,9 @@ RUN python -m pip install --no-cache-dir -U pip setuptools wheel \
 
 # Install Ollama into the image
 RUN curl -fsSL https://ollama.com/install.sh | sh
+
+# Wrap the base image entrypoint so we can run /workspace/start.sh at boot
+RUN mv /start.sh /start.sh.base
+COPY start-wrapper.sh /start.sh
+RUN chmod +x /start.sh
+
