@@ -37,3 +37,12 @@ jobs:
           file: Dockerfile.deps1
           push: true
           tags: sidebobshow/comfyui-cuda13:deps1
+
+      - name: Build and push deps2
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: Dockerfile.deps2
+          push: true
+          tags: sidebobshow/comfyui-cuda13:deps2
+
