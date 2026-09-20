@@ -1,6 +1,6 @@
 FROM runpod/comfyui:cuda13.0
 
-# Fix python command (same as deps1/basefix)
+# Fix python command 
 RUN ln -s /usr/bin/python3 /usr/local/bin/python
 
 # System deps:
@@ -11,9 +11,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
       zstd \
     && rm -rf /var/lib/apt/lists/*
 
-# Python deps
+# Python installs
 RUN python -m pip install --no-cache-dir -U pip setuptools wheel \
  && python -m pip install --no-cache-dir soundfile torchdiffeq
 
-# Install Ollama into the image (so it doesn't need reinstalling each pod start)
+# Install Ollama into the image
 RUN curl -fsSL https://ollama.com/install.sh | sh
